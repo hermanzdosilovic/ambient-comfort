@@ -8,6 +8,11 @@ class LogsController < ActionController::Base
         end
     end
 
+    def delete_all
+        Log.delete_all
+        redirect_to root_path
+    end
+
     private
 
     def log_params
