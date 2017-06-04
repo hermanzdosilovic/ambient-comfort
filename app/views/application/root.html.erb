@@ -1,0 +1,30 @@
+<h1>Ambient Comfort Logs</h1>
+
+<% if @logs.empty? %>
+    <p>No data.</p>
+<% else %>
+    <table>
+        <thead>
+            <th>#</th>
+            <th>Date and Time</th>
+            <th>Temperature</th>
+            <th>Moisture</th>
+            <th>Pressure</th>
+            <th>Brightness</th>
+            <th>Noise</th>
+        </thead>
+        <tbody>
+            <% @logs.each_with_index do |log, index| %>
+                <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= log.created_at %></td>
+                    <td><%= log.temperature %></td>
+                    <td><%= log.moisture %></td>
+                    <td><%= log.pressure %></td>
+                    <td><%= log.brightness %></td>
+                    <td><%= log.noise %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% end %>
