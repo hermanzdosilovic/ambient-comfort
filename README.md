@@ -38,7 +38,7 @@ X-Auth-Token: <YOUR AUTH TOKEN>
 }
 ```
 
-#### Response `202`
+#### Response `201`
 ##### Headers
 ```json
 Content-Type: application/json
