@@ -17,6 +17,6 @@ ENV RAILS_ENV production
 
 COPY . /usr/src/app
 RUN bundle && rails assets:precompile
-CMD rm -f /tmp/pids/server.pid && \
+CMD rm -f tmp/pids/server.pid && \
     rails db:create db:migrate && \
     rails s -b 0.0.0.0

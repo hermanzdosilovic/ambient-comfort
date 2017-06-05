@@ -1,0 +1,10 @@
+version: '2'
+services:
+  web:
+    image: hermanzdosilovic/ambient-comfort
+    env_file: ambient.conf
+    volumes:
+      - ./srv/production.sqlite3:/usr/src/app/db/production.sqlite3
+    ports:
+      - "3000:3000"
+    restart: always

@@ -45,7 +45,7 @@ $(document).ready(function() {
         liveReload = !liveReload;
         var text = liveReload ? "Stop" : "Start";
         var icon = liveReload ? "stop" : "play";
-        $("#toggle-live-reload-btn").html(`<i class=\"${icon} icon\"></i>${text} Live Reload`);
+        $("#toggle-live-reload-btn").html("<i class=\"" + icon + " icon\"></i>" + text + " Live Reload");
         if (liveReload) {
             setTimeout(reloadData, 100);
         }

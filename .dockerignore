@@ -1,0 +1,9 @@
+.*
+log/*
+tmp/*
+srv/*
+README.md
+faker.rb
+ambient.conf
+Dockerfile
+docker-compose.yml
