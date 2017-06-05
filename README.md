@@ -34,7 +34,8 @@ X-Auth-Token: <YOUR AUTH TOKEN>
   "moisture": 88.62415,
   "pressure": 991.99443,
   "brightness": 5.22814,
-  "noise": 5.94466
+  "noise": 5.94466,
+  "message": "There are currently <strong>5</strong> people in the room."
 }
 ```
 
@@ -53,7 +54,8 @@ Content-Type: application/json
   "moisture": "88.62415",
   "pressure": "991.99443",
   "brightness": "5.22814",
-  "noise": "5.94466"
+  "noise": "5.94466",
+  "message": "There are currently <strong>5</strong> people in the room."
 }
 ```
 
