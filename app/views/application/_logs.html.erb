@@ -1,3 +1,9 @@
+<% if message.present? %>
+    <div class="ui container log-message">
+        <div class="ui big message"><i class="info circle icon"></i><%= message.html_safe %></div>
+    </div>
+<% end %>
+
 <div class="ui two column grid">
     <div class="row">
         <div class="sixteen wide column">

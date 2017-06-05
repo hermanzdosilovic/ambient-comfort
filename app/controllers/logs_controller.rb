@@ -38,7 +38,8 @@ class LogsController < ActionController::Base
             :moisture,
             :pressure,
             :brightness,
-            :noise
+            :noise,
+            :message
         )
     end
 end

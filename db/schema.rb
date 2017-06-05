@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604214115) do
+ActiveRecord::Schema.define(version: 20170605190512) do
 
   create_table "logs", force: :cascade do |t|
     t.datetime "created_at"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170604214115) do
     t.decimal "pressure"
     t.decimal "brightness"
     t.decimal "noise"
+    t.text "message"
   end
 
 end

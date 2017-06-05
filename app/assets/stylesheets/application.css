@@ -24,3 +24,8 @@ body {
     background-color: #eee;
     color: #999;
 }
+
+.log-message {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}

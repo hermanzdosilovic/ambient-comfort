@@ -21,7 +21,8 @@ while true do
         moisture: Faker::Number.decimal(2, 5),
         pressure: Faker::Number.between(950, 1050).to_i + Faker::Number.decimal(0, 5).to_f,
         brightness: Faker::Number.between(0, 5).to_i + Faker::Number.decimal(0, 5).to_f,
-        noise: Faker::Number.between(0, 5).to_i + Faker::Number.decimal(0, 5).to_f
+        noise: Faker::Number.between(0, 5).to_i + Faker::Number.decimal(0, 5).to_f,
+        message: Faker::Lorem.paragraph
     }
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true if uri.scheme == 'https'
