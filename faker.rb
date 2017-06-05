@@ -4,10 +4,14 @@ require 'uri'
 require 'json'
 
 SLEEP_TIME = 2
+AUTH_TOKEN = ''
 
 url = ARGV[0].to_s.empty? ? 'http://localhost:3000' : ARGV[0]
 uri = URI.parse(url + '/logs')
-header = { 'Content-Type': 'application/json' }
+header = {
+    'Content-Type': 'application/json',
+    'X-Auth-Token': AUTH_TOKEN
+}
 
 puts "Sending fake data to #{uri} ..."
 while true do

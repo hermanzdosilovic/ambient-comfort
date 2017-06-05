@@ -1,4 +1,6 @@
 class LogsController < ActionController::Base
+    before_action :authenticate_user
+
     def create
         log = Log.new(log_params)
         if log.save
@@ -14,6 +16,15 @@ class LogsController < ActionController::Base
     end
 
     private
+
+    def authenticate_user
+        return unless Rails.application.secrets.api_key.presence
+        password_correct = ActiveSupport::SecurityUtils.secure_compare(
+            ::Digest::SHA256.hexdigest(Rails.application.secrets.api_key),
+            ::Digest::SHA256.hexdigest(request.headers['X-Auth-Token'].to_s)
+        )
+        head :unauthorized unless password_correct
+    end
 
     def log_params
         params.require(:log).permit(
