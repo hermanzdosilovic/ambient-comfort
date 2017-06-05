@@ -29,12 +29,12 @@ X-Auth-Token: <YOUR AUTH TOKEN>
 ##### Body
 ```json
 {
-    "created_at": "2017-06-05 03:30:46",
-    "temperature": 32,
-    "moisture": 88.62415,
-    "pressure": 991.99443,
-    "brightness": 5.22814,
-    "noise": 5.94466
+  "created_at": "2017-06-05 03:30:46",
+  "temperature": 32,
+  "moisture": 88.62415,
+  "pressure": 991.99443,
+  "brightness": 5.22814,
+  "noise": 5.94466
 }
 ```
 
