@@ -1,5 +1,7 @@
 //= require jquery
 //= require semantic-ui
+//= require Chart.bundle
+//= require chartkick
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
@@ -19,7 +21,12 @@ function getUrlParameter(param) {
 
 $(document).ready(function() {
     var reloadTimeout = 2000;
+    var liveReload = true;
     function reloadData() {
+        if (!liveReload) {
+            return;
+        }
+
         $.ajax({
             url: '/?page=' + (getUrlParameter('page') || 1),
             dataType: 'script',
@@ -33,4 +40,14 @@ $(document).ready(function() {
     }
 
     setTimeout(reloadData, reloadTimeout);
+
+    $("body").on("click", "#toggle-live-reload-btn", function() {
+        liveReload = !liveReload;
+        var text = liveReload ? "Stop" : "Start";
+        var icon = liveReload ? "stop" : "play";
+        $("#toggle-live-reload-btn").html(`<i class=\"${icon} icon\"></i>${text} Live Reload`);
+        if (liveReload) {
+            setTimeout(reloadData, 100);
+        }
+    });
 });

@@ -1,4 +1,18 @@
 <h1 class="ui header"><i class="home icon"></i> Ambient Comfort Data</h1>
-<div class="logs">
-    <%= render partial: 'logs', locals: { logs: @logs } %>
-</div>
+<% if @logs.empty? %>
+    <div class="ui message">
+        <div class="header"><i class="bar chart icon"></i> No ambient data present</div>
+        <p>There is no data to show.</p>
+    </div>
+<% else %>
+    <div class="ui right aligned container">
+        <button class="ui labeled icon button" id="toggle-live-reload-btn"><i class="stop icon"></i>Stop Live Reload</button>
+        <a data-confirm="Are you sure?" class="ui negative labeled icon button" rel="nofollow" data-method="delete" href="/logs/delete_all">
+                <i class="trash icon"></i>
+            Delete All
+        </a>
+    </div>
+    <div class="logs">
+        <%= render partial: 'logs', locals: { logs: @logs, latest_logs: @latest_logs } %>
+    </div>
+<% end %>

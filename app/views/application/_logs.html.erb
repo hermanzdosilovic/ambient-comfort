@@ -1,43 +1,64 @@
-<% if logs.empty? %>
-    <div class="ui message">
-        <div class="header">No ambient data present</div>
-        <p>There is no data to show.</p>
+<div class="ui two column grid">
+    <div class="row">
+        <div class="sixteen wide column">
+            <h2 class="ui header">Temperature<div class="sub header">In last 24 hours</div></h2>
+            <%= line_chart latest_logs.collect { |l| [l.created_at, l.temperature] } %>
+        </div>
     </div>
-<% else %>
-    <div class="ui left aligned container">
-        <%= will_paginate logs, renderer: WillPaginateSemanticUi::ActionView::Renderer %>
-        <a data-confirm="Are you sure?" class="ui negative labeled icon button" rel="nofollow" data-method="delete" href="/logs/delete_all">
-             <i class="trash icon"></i>
-            Delete All
-        </a>
+    <div class="row">
+        <div class="column">
+            <h2 class="ui header">Moisture<div class="sub header">In last 24 hours</div></h2>
+            <%= line_chart latest_logs.collect { |l| [l.created_at, l.moisture] } %>
+        </div>
+        <div class="column">
+            <h2 class="ui header">Pressure<div class="sub header">In last 24 hours</div></h2>
+            <%= line_chart latest_logs.collect { |l| [l.created_at, l.pressure] } %>
+        </div>
     </div>
-    <table class="ui celled table unstackable">
-        <thead>
+    <div class="row">
+        <div class="column">
+            <h2 class="ui header">Brightness<div class="sub header">In last 24 hours</div></h2>
+            <%= line_chart latest_logs.collect { |l| [l.created_at, l.brightness] } %>
+        </div>
+        <div class="column">
+            <h2 class="ui header">Noise<div class="sub header">In last 24 hours</div></h2>
+            <%= line_chart latest_logs.collect { |l| [l.created_at, l.noise] } %>
+        </div>
+    </div>
+</div>
+
+<div class="ui divider"></div>
+
+<h2 class="ui header">All Time Data</h2>
+<div class="ui left aligned container">
+    <%= will_paginate logs, renderer: WillPaginateSemanticUi::ActionView::Renderer %>
+</div>
+<table class="ui celled table unstackable">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Date and Time</th>
+            <th>Temperature</th>
+            <th>Moisture</th>
+            <th>Pressure</th>
+            <th>Brightness</th>
+            <th>Noise</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% logs.each_with_index do |log, index| %>
             <tr>
-                <th>#</th>
-                <th>Date and Time</th>
-                <th>Temperature</th>
-                <th>Moisture</th>
-                <th>Pressure</th>
-                <th>Brightness</th>
-                <th>Noise</th>
+                <td><%= index + 1 %></td>
+                <td><%= log.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+                <td><%= log.temperature %></td>
+                <td><%= log.moisture %></td>
+                <td><%= log.pressure %></td>
+                <td><%= log.brightness %></td>
+                <td><%= log.noise %></td>
             </tr>
-        </thead>
-        <tbody>
-            <% logs.each_with_index do |log, index| %>
-                <tr>
-                    <td><%= index + 1 %></td>
-                    <td><%= log.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
-                    <td><%= log.temperature %></td>
-                    <td><%= log.moisture %></td>
-                    <td><%= log.pressure %></td>
-                    <td><%= log.brightness %></td>
-                    <td><%= log.noise %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-    <div class="ui left aligned container">
-        <%= will_paginate logs, renderer: WillPaginateSemanticUi::ActionView::Renderer %>
-    </div>
-<% end %>
+        <% end %>
+    </tbody>
+</table>
+<div class="ui left aligned container">
+    <%= will_paginate logs, renderer: WillPaginateSemanticUi::ActionView::Renderer %>
+</div>
