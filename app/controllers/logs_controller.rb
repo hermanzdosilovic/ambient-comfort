@@ -1,5 +1,5 @@
 class LogsController < ActionController::Base
-    before_action :authenticate_user
+    before_action :authenticate_user, only: [:create]
 
     def create
         log = Log.new(log_params)
