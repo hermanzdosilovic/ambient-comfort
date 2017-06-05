@@ -12,7 +12,7 @@ Your device should frequently send ambient data to `/logs` route and then you ca
 2. Download [ambient.conf](https://github.com/hermanzdosilovic/ambient-comfort/blob/master/ambient.conf) file and fill it up.
     - `SECRET_KEY_BASES` - used for verifying the integrity of signed cookies. Make sure it is at least 30 characters and all random
     - `API_KEY` - auth token used when sending data to server
-    - `USERNAME` and `PASSWORD` are used for authenticating users who want to see the data
+    - `USERNAME` and `PASSWORD` are used for authenticating users who want to delete old data
 3. Run `mkdir srv && touch srv/production.sqlite3`
 4. Run `docker-compose up -d`
 5. Open `http://<YOUR IP>:3000` in your browser

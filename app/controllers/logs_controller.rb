@@ -1,5 +1,10 @@
 class LogsController < ActionController::Base
     before_action :authenticate_user, only: [:create]
+    http_basic_authenticate_with(
+        name: Rails.application.secrets.username,
+        password: Rails.application.secrets.password,
+        only: [:delete_all]
+    )
 
     def create
         log = Log.new(log_params)
