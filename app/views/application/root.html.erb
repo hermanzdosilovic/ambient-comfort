@@ -1,38 +1,4 @@
 <h1 class="ui header">Ambient Comfort Data</h1>
-
-<% if @logs.empty? %>
-    <div class="ui message">
-        <div class="header">No ambient data present</div>
-        <p>There is no data to show.</p>
-    </div>
-<% else %>
-    <div class="ui right aligned container">
-        <%= link_to 'Delete All', delete_all_logs_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui negative basic button'%>
-    </div>
-    <table class="ui celled table unstackable">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Date and Time</th>
-                <th>Temperature</th>
-                <th>Moisture</th>
-                <th>Pressure</th>
-                <th>Brightness</th>
-                <th>Noise</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @logs.each_with_index do |log, index| %>
-                <tr>
-                    <td><%= index + 1 %></td>
-                    <td><%= log.created_at %></td>
-                    <td><%= log.temperature %></td>
-                    <td><%= log.moisture %></td>
-                    <td><%= log.pressure %></td>
-                    <td><%= log.brightness %></td>
-                    <td><%= log.noise %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-<% end %>
+<div class="logs">
+    <%= render partial: 'logs', locals: { logs: @logs } %>
+</div>
